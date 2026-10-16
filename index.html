@@ -4,279 +4,262 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نامەی پیرۆز بایت بۆ هاتوا ئاران گیان</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #ffe0f0, #fff5e1, #e0f7ff);
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow-x: hidden;
-    padding: 20px;
+body {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(-45deg,#ffe0f0,#fff5e1,#e0f7ff,#f3e0ff);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;
+  padding:20px;
+  overflow-x:hidden;
+  position:relative;
+}
+
+@keyframes bgMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* دڵ و گوڵی فڕیو */
+.floaty {
+  position:fixed;
+  top:-10%;
+  pointer-events:none;
+  z-index:1;
+  animation:fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform:translateY(115vh) rotate(360deg); opacity:0; }
+}
+
+/* سەرنووسە */
+h1 {
+  position:relative;
+  z-index:10;
+  font-size:clamp(1.5rem,5.5vw,2.9rem);
+  color:#d6336c;
+  text-align:center;
+  margin-bottom:40px;
+  font-weight:700;
+  line-height:1.7;
+  animation:glowText 2s ease-in-out infinite alternate;
+  padding:0 10px;
+}
+
+@keyframes glowText {
+  from {
+    text-shadow:2px 2px 10px rgba(214,51,108,.3);
   }
-
-  /* دەقی سەرەوە */
-  h1 {
-    font-size: clamp(1.5rem, 5vw, 2.8rem);
-    color: #d6336c;
-    text-align: center;
-    text-shadow: 2px 2px 8px rgba(214, 51, 108, 0.3);
-    margin-bottom: 40px;
-    animation: glow 2s ease-in-out infinite alternate;
-    line-height: 1.6;
+  to {
+    text-shadow:2px 2px 25px rgba(214,51,108,.9), 0 0 40px rgba(255,182,193,.8);
   }
+}
 
-  @keyframes glow {
-    from { text-shadow: 2px 2px 8px rgba(214, 51, 108, 0.3); }
-    to   { text-shadow: 2px 2px 20px rgba(214, 51, 108, 0.8), 0 0 30px rgba(255, 182, 193, 0.7); }
-  }
+/* پشیلە */
+.cat-box {
+  position:relative;
+  z-index:10;
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+  transition:transform .3s;
+}
 
-  /* پشیلە */
-  .cat-container {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    animation: float 3s ease-in-out infinite;
-  }
+.cat-box:hover { transform:scale(1.08); }
+.cat-box:active { transform:scale(0.95); }
 
-  .cat-container:hover { transform: scale(1.08); }
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-12px); }
-  }
+.cat { width:240px; display:block; filter:drop-shadow(0 10px 20px rgba(247,155,74,.4)); }
 
-  .cat {
-    width: 220px;
-    height: auto;
-  }
+/* نامەکە لە دەستی پشیلە */
+.letter {
+  position:absolute;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  width:75px;
+  height:52px;
+  background:#fffdf5;
+  border:2px solid #e8b4c8;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  animation:wiggle 1.5s ease-in-out infinite;
+}
 
-  /* نامەکە لە دەستی پشیلە */
-  .letter {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 55px;
-    background: #fffdf5;
-    border: 2px solid #e8b4c8;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    animation: wiggle 1.5s ease-in-out infinite;
-  }
+@keyframes wiggle {
+  0%,100%{transform:translateX(-50%) rotate(-4deg)}
+  50%{transform:translateX(-50%) rotate(4deg)}
+}
 
-  @keyframes wiggle {
-    0%, 100% { transform: translateX(-50%) rotate(-3deg); }
-    50%      { transform: translateX(-50%) rotate(3deg); }
-  }
+.hint {
+  position:relative;
+  z-index:10;
+  margin-top:35px;
+  color:#a61e4d;
+  font-size:1.05rem;
+  font-weight:600;
+  animation:pulse 1.8s ease-in-out infinite;
+  text-align:center;
+}
 
-  /* پەنجەرەی نامە */
-  .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
+@keyframes pulse {
+  0%,100%{opacity:.5; transform:scale(1)}
+  50%{opacity:1; transform:scale(1.05)}
+}
 
-  .modal.active { display: flex; }
+/* پەنجەرەی نامە */
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(60,0,30,.55);
+  backdrop-filter:blur(6px);
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
-  .modal-content {
-    background: linear-gradient(160deg, #fffafc, #fff0f5, #f0f8ff);
-    border-radius: 24px;
-    padding: 45px 35px;
-    max-width: 550px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(214, 51, 108, 0.4);
-    border: 3px solid #ffd1e3;
-    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-  }
+.modal.on { display:flex; }
 
-  @keyframes popIn {
-    from { transform: scale(0.5); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
+.box {
+  background:linear-gradient(160deg,#fffafc,#fff0f5,#f0f8ff);
+  border-radius:28px;
+  padding:50px 32px;
+  max-width:540px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(214,51,108,.5), 0 0 0 3px #ffd1e3 inset;
+  border:3px solid #ffd1e3;
+  position:relative;
+  animation:pop .55s cubic-bezier(.34,1.56,.64,1);
+}
 
-  .modal-content p {
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-    color: #c2255c;
-    line-height: 2.2;
-    font-weight: 600;
-  }
+@keyframes pop {
+  from{transform:scale(.4) rotate(-8deg); opacity:0}
+  to{transform:scale(1) rotate(0); opacity:1}
+}
 
-  .modal-content .emoji-line {
-    font-size: 2rem;
-    margin-top: 25px;
-    letter-spacing: 8px;
-  }
+.box p {
+  font-size:clamp(1.1rem,3.8vw,1.45rem);
+  color:#c2255c;
+  line-height:2.3;
+  font-weight:600;
+}
 
-  .close-btn {
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    background: #ffb3c6;
-    border: none;
-    color: #fff;
-    font-size: 22px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-  }
+.box .em {
+  font-size:2rem;
+  margin-top:25px;
+  letter-spacing:10px;
+  animation:bounce 1.5s ease-in-out infinite;
+}
 
-  .close-btn:hover { background: #d6336c; transform: rotate(90deg); }
+@keyframes bounce {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
 
-  /* دل و ئەستێرە */
-  .heart {
-    position: fixed;
-    top: -10%;
-    font-size: 22px;
-    animation: fall linear infinite;
-    pointer-events: none;
-    z-index: 1;
-  }
+.close {
+  position:absolute;
+  top:14px;
+  left:16px;
+  background:#ffb3c6;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.3s;
+}
 
-  @keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-  }
-
-  .hint {
-    margin-top: 30px;
-    color: #a61e4d;
-    font-size: 1.1rem;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50%      { opacity: 1; }
-  }
+.close:hover { background:#d6336c; transform:rotate(90deg) scale(1.1); }
 </style>
 </head>
 <body>
 
-  <h1>نامەی پیرۆز بایت بۆ هاتوا ئاران گیان</h1>
+<h1>نامەی پیرۆز بایت بۆ هاتوا ئاران گیان</h1>
 
-  <div class="cat-container" onclick="openLetter()">
-    <!-- پشیلەی پرتەقاڵی (SVG) -->
-    <svg class="cat" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
-      <!-- گوێ -->
-      <polygon points="70,90 55,20 120,70" fill="#f79b4a"/>
-      <polygon points="230,90 245,20 180,70" fill="#f79b4a"/>
-      <polygon points="78,85 68,38 112,72" fill="#ffd1b3"/>
-      <polygon points="222,85 232,38 188,72" fill="#ffd1b3"/>
+<div class="cat-box" onclick="document.getElementById('m').classList.add('on')">
+<svg class="cat" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+<polygon points="70,90 55,20 120,70" fill="#f79b4a"/>
+<polygon points="230,90 245,20 180,70" fill="#f79b4a"/>
+<polygon points="78,85 68,38 112,72" fill="#ffd1b3"/>
+<polygon points="222,85 232,38 188,72" fill="#ffd1b3"/>
+<ellipse cx="150" cy="150" rx="95" ry="80" fill="#f79b4a"/>
+<ellipse cx="100" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
+<ellipse cx="200" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
+<ellipse cx="150" cy="105" rx="10" ry="6" fill="#e07b2a" opacity=".4"/>
+<ellipse cx="112" cy="150" rx="16" ry="19" fill="#fff"/>
+<ellipse cx="188" cy="150" rx="16" ry="19" fill="#fff"/>
+<ellipse cx="114" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
+<ellipse cx="190" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
+<circle cx="111" cy="148" r="3.5" fill="#fff"/>
+<circle cx="187" cy="148" r="3.5" fill="#fff"/>
+<polygon points="150,172 143,182 157,182" fill="#ff8fa3"/>
+<ellipse cx="150" cy="184" rx="6" ry="4" fill="#ffb3c1"/>
+<path d="M150 188 Q135 205 122 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M150 188 Q165 205 178 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<line x1="85" y1="135" x2="125" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
+<line x1="215" y1="135" x2="175" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="150" cy="280" rx="80" ry="55" fill="#f79b4a"/>
+<ellipse cx="105" cy="325" rx="28" ry="15" fill="#f79b4a"/>
+<ellipse cx="195" cy="325" rx="28" ry="15" fill="#f79b4a"/>
+<ellipse cx="105" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
+<ellipse cx="195" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
+<ellipse cx="110" cy="250" rx="18" ry="14" fill="#f79b4a"/>
+<ellipse cx="190" cy="250" rx="18" ry="14" fill="#f79b4a"/>
+</svg>
+<div class="letter">💌</div>
+</div>
 
-      <!-- سەر -->
-      <ellipse cx="150" cy="150" rx="95" ry="80" fill="#f79b4a"/>
+<p class="hint">کرتە لەسەر پشیلەکە بکە بۆ کردنەوەی نامەکە 🐱</p>
 
-      <!-- خاڵەکان -->
-      <ellipse cx="100" cy="120" rx="12" ry="7" fill="#e07b2a" opacity="0.5"/>
-      <ellipse cx="200" cy="120" rx="12" ry="7" fill="#e07b2a" opacity="0.5"/>
-      <ellipse cx="150" cy="105" rx="10" ry="6" fill="#e07b2a" opacity="0.4"/>
-
-      <!-- چاو -->
-      <ellipse cx="112" cy="150" rx="16" ry="19" fill="#fff"/>
-      <ellipse cx="188" cy="150" rx="16" ry="19" fill="#fff"/>
-      <ellipse cx="114" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
-      <ellipse cx="190" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
-      <circle cx="111" cy="148" r="3.5" fill="#fff"/>
-      <circle cx="187" cy="148" r="3.5" fill="#fff"/>
-
-      <!-- لووت -->
-      <polygon points="150,172 143,182 157,182" fill="#ff8fa3"/>
-      <ellipse cx="150" cy="184" rx="6" ry="4" fill="#ffb3c1"/>
-
-      <!-- دەم -->
-      <path d="M150 188 Q135 205 122 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M150 188 Q165 205 178 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-      <!-- سمێڵ -->
-      <line x1="85" y1="135" x2="125" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
-      <line x1="215" y1="135" x2="175" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
-
-      <!-- لاشە -->
-      <ellipse cx="150" cy="280" rx="80" ry="55" fill="#f79b4a"/>
-
-      <!-- پێ -->
-      <ellipse cx="105" cy="325" rx="28" ry="15" fill="#f79b4a"/>
-      <ellipse cx="195" cy="325" rx="28" ry="15" fill="#f79b4a"/>
-      <ellipse cx="105" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
-      <ellipse cx="195" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
-
-      <!-- دەستەکان کە نامەکەیان گرتووە -->
-      <ellipse cx="110" cy="250" rx="18" ry="14" fill="#f79b4a"/>
-      <ellipse cx="190" cy="250" rx="18" ry="14" fill="#f79b4a"/>
-    </svg>
-
-    <!-- نامەکە -->
-    <div class="letter">💌</div>
-  </div>
-
-  <p class="hint">کرتە لەسەر پشیلەکە بکە بۆ کردنەوەی نامەکە 🐱</p>
-
-  <!-- پەنجەرەی نامە -->
-  <div class="modal" id="letterModal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeLetter()">✕</button>
-      <p>
-        ئاران، یەکەم بوونت زۆر پیرۆز بێت،<br>
-        هەمیشە وا بدرەوشێیتەوە و ببیتە مایەی شانازی 🥹🤍<br>
-        بەڕاستی کەسێکی وەک تۆ شایەنی<br>
-        هەموو جوانییەکانی ژیانە. 🫶🏻🌷
-      </p>
-      <div class="emoji-line">🎂🎈🎁🌸✨</div>
-    </div>
-  </div>
+<div class="modal" id="m" onclick="if(event.target===this)this.classList.remove('on')">
+<div class="box">
+<button class="close" onclick="document.getElementById('m').classList.remove('on')">✕</button>
+<p>
+ئاران، یەکەم بوونت زۆر پیرۆز بێت،<br>
+هەمیشە وا بدرەوشێیتەوە و ببیتە مایەی شانازی 🥹🤍<br>
+بەڕاستی کەسێکی وەک تۆ شایەنی<br>
+هەموو جوانییەکانی ژیانە. 🫶🏻🌷
+</p>
+<div class="em">🎂🎈🎁🌸✨</div>
+</div>
+</div>
 
 <script>
-  // کردنەوە و داخستنی نامە
-  function openLetter() {
-    document.getElementById('letterModal').classList.add('active');
-  }
-
-  function closeLetter() {
-    document.getElementById('letterModal').classList.remove('active');
-  }
-
-  // داخستن بە کرتە لە دەرەوە
-  document.getElementById('letterModal').addEventListener('click', function(e) {
-    if (e.target === this) closeLetter();
-  });
-
-  // داخستن بە ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLetter();
-  });
-
-  // دروستکردنی دل و ئەستێرەی ئەنیمەیشن
-  const symbols = ['💖', '🌸', '✨', '💗', '🌷', '⭐', '🩷'];
-  for (let i = 0; i < 18; i++) {
-    const el = document.createElement('div');
-    el.className = 'heart';
-    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.left = Math.random() * 100 + '%';
-    el.style.animationDuration = (Math.random() * 6 + 6) + 's';
-    el.style.animationDelay = (Math.random() * 6) + 's';
-    el.style.fontSize = (Math.random() * 18 + 14) + 'px';
-    document.body.appendChild(el);
-  }
+// دروستکردنی دڵ و گوڵی فڕیو
+const symbols = ['💖','🌸','✨','💗','🌷','⭐','🩷','💕'];
+for (let i = 0; i < 22; i++) {
+  const el = document.createElement('div');
+  el.className = 'floaty';
+  el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  el.style.left = Math.random() * 100 + '%';
+  el.style.fontSize = (Math.random() * 18 + 14) + 'px';
+  el.style.animationDuration = (Math.random() * 6 + 7) + 's';
+  el.style.animationDelay = (Math.random() * 7) + 's';
+  document.body.appendChild(el);
+}
 </script>
 </body>
 </html>
