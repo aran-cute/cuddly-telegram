@@ -21,7 +21,6 @@ body {
   position:relative;
 }
 
-/* گوڵی فڕیو */
 .floaty {
   position:fixed;
   top:-10%;
@@ -36,7 +35,6 @@ body {
   100%{ transform:translateY(115vh) rotate(360deg); opacity:0; }
 }
 
-/* سەرنووسە */
 h1 {
   position:relative;
   z-index:10;
@@ -62,7 +60,6 @@ h1 {
   line-height:1.9;
 }
 
-/* کارتی وێنە */
 .photo-card {
   position:relative;
   z-index:10;
@@ -102,7 +99,6 @@ h1 {
   font-family:'Vazirmatn',sans-serif;
 }
 
-/* تەیپی پینک لە گۆشە */
 .tape {
   position:absolute;
   width:70px;
@@ -114,7 +110,6 @@ h1 {
 .tape.tl { top:-8px; left:20px; transform:rotate(-25deg); }
 .tape.tr { top:-8px; right:20px; transform:rotate(25deg); }
 
-/* دوگمە */
 .hint {
   position:relative;
   z-index:10;
@@ -138,7 +133,6 @@ h1 {
   50%{ transform:scale(1.07); }
 }
 
-/* مۆداڵ */
 .modal {
   display:none;
   position:fixed;
@@ -257,7 +251,7 @@ h1 {
   <div class="tape tl"></div>
   <div class="tape tr"></div>
   <img src="https://i.postimg.cc/sMkvZmMt/1792149420927.jpg" alt="ئاران">
-  <div class="caption">بۆ ئارانی خۆشەویستم 🎀</div>
+  <div class="caption">بۆ ئاران گیان 🎀</div>
 </div>
 
 <button class="hint" onclick="openLetter()">
@@ -280,7 +274,6 @@ h1 {
 </div>
 
 <script>
-// گوڵ و دڵی فڕیو
 const symbols = ['💖','🌸','✨','💗','🌷','🩷','🎀','💕'];
 for (let i = 0; i < 25; i++) {
   const el = document.createElement('div');
