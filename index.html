@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نامەی پیرۆز بایت بۆ هاتوا ئاران گیان</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<title>💌 نامەی پیرۆز بایت بۆ ئاران گیان</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -14,9 +14,9 @@ body {
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(-45deg,#ffe0f0,#fff5e1,#e0f7ff,#f3e0ff);
+  background:linear-gradient(-45deg,#ffd6e8,#ffe8d6,#d6f0ff,#e8d6ff);
   background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+  animation:bgMove 15s ease infinite;
   font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;
   padding:20px;
   overflow-x:hidden;
@@ -36,101 +36,139 @@ body {
   pointer-events:none;
   z-index:1;
   animation:fall linear infinite;
+  filter:drop-shadow(0 0 6px rgba(255,182,193,.6));
 }
 
 @keyframes fall {
-  to { transform:translateY(115vh) rotate(360deg); opacity:0; }
+  0%{ transform:translateY(-10vh) rotate(0); opacity:1; }
+  100%{ transform:translateY(115vh) rotate(360deg); opacity:0; }
 }
 
 /* سەرنووسە */
 h1 {
   position:relative;
   z-index:10;
-  font-size:clamp(1.5rem,5.5vw,2.9rem);
-  color:#d6336c;
+  font-size:clamp(1.4rem,5.5vw,2.7rem);
+  background:linear-gradient(90deg,#d6336c,#ff6b9d,#c2255c,#ff8fab,#d6336c);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
   text-align:center;
-  margin-bottom:40px;
-  font-weight:700;
-  line-height:1.7;
-  animation:glowText 2s ease-in-out infinite alternate;
+  margin-bottom:35px;
+  font-weight:900;
+  line-height:1.8;
+  animation:shine 4s linear infinite;
   padding:0 10px;
+  filter:drop-shadow(2px 2px 8px rgba(214,51,108,.35));
 }
 
-@keyframes glowText {
-  from {
-    text-shadow:2px 2px 10px rgba(214,51,108,.3);
-  }
-  to {
-    text-shadow:2px 2px 25px rgba(214,51,108,.9), 0 0 40px rgba(255,182,193,.8);
-  }
+@keyframes shine {
+  0%{ background-position:0% 50%; }
+  100%{ background-position:300% 50%; }
+}
+
+/* ستارەی درەوشاوە لە دەوری پشیلە */
+.stars {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:9;
+}
+
+.star {
+  position:absolute;
+  color:#ffd700;
+  font-size:20px;
+  animation:twinkle 2s ease-in-out infinite;
+  filter:drop-shadow(0 0 8px #ffd700);
+}
+
+@keyframes twinkle {
+  0%,100%{ opacity:.3; transform:scale(.7) rotate(0); }
+  50%{ opacity:1; transform:scale(1.3) rotate(180deg); }
 }
 
 /* پشیلە */
-.cat-box {
+.cat-wrap {
   position:relative;
   z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cat-box {
+  position:relative;
   cursor:pointer;
   animation:float 3s ease-in-out infinite;
-  transition:transform .3s;
+  transition:transform .35s;
+  filter:drop-shadow(0 15px 30px rgba(247,155,74,.5));
 }
 
-.cat-box:hover { transform:scale(1.08); }
-.cat-box:active { transform:scale(0.95); }
+.cat-box:hover { transform:scale(1.1) rotate(-2deg); }
+.cat-box:active { transform:scale(0.92); }
 
 @keyframes float {
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-18px); }
 }
 
-.cat { width:240px; display:block; filter:drop-shadow(0 10px 20px rgba(247,155,74,.4)); }
+.cat { width:260px; display:block; }
 
 /* نامەکە لە دەستی پشیلە */
 .letter {
   position:absolute;
-  bottom:22px;
+  bottom:28px;
   left:50%;
   transform:translateX(-50%);
-  width:75px;
-  height:52px;
-  background:#fffdf5;
-  border:2px solid #e8b4c8;
-  border-radius:6px;
+  width:80px;
+  height:56px;
+  background:linear-gradient(135deg,#fffdf5,#ffe8f0);
+  border:2px solid #ffb3c6;
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  box-shadow:0 4px 12px rgba(0,0,0,.15);
-  animation:wiggle 1.5s ease-in-out infinite;
+  font-size:30px;
+  box-shadow:0 5px 15px rgba(214,51,108,.3);
+  animation:wiggle 1.4s ease-in-out infinite;
 }
 
 @keyframes wiggle {
-  0%,100%{transform:translateX(-50%) rotate(-4deg)}
-  50%{transform:translateX(-50%) rotate(4deg)}
+  0%,100%{ transform:translateX(-50%) rotate(-5deg); }
+  50%{ transform:translateX(-50%) rotate(5deg); }
 }
 
+/* پەنجەرەی نامە */
 .hint {
   position:relative;
   z-index:10;
   margin-top:35px;
-  color:#a61e4d;
+  padding:14px 28px;
+  background:linear-gradient(135deg,#ffb3c6,#ff8fab);
+  color:#fff;
+  font-weight:700;
   font-size:1.05rem;
-  font-weight:600;
+  border-radius:50px;
+  box-shadow:0 8px 20px rgba(214,51,108,.4);
   animation:pulse 1.8s ease-in-out infinite;
   text-align:center;
+  cursor:pointer;
 }
 
 @keyframes pulse {
-  0%,100%{opacity:.5; transform:scale(1)}
-  50%{opacity:1; transform:scale(1.05)}
+  0%,100%{ transform:scale(1); box-shadow:0 8px 20px rgba(214,51,108,.4); }
+  50%{ transform:scale(1.06); box-shadow:0 12px 30px rgba(214,51,108,.7); }
 }
 
-/* پەنجەرەی نامە */
+/* مۆداڵ */
 .modal {
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(60,0,30,.55);
-  backdrop-filter:blur(6px);
+  background:rgba(60,0,30,.65);
+  backdrop-filter:blur(8px);
   z-index:100;
   align-items:center;
   justify-content:center;
@@ -139,41 +177,68 @@ h1 {
 
 .modal.on { display:flex; }
 
+/* کارتی نامە */
 .box {
   background:linear-gradient(160deg,#fffafc,#fff0f5,#f0f8ff);
-  border-radius:28px;
-  padding:50px 32px;
-  max-width:540px;
+  border-radius:30px;
+  padding:55px 35px;
+  max-width:560px;
   width:100%;
   text-align:center;
-  box-shadow:0 25px 70px rgba(214,51,108,.5), 0 0 0 3px #ffd1e3 inset;
-  border:3px solid #ffd1e3;
+  box-shadow:0 30px 80px rgba(214,51,108,.6), 0 0 0 4px #ffd1e3 inset;
+  border:4px solid #ffb3c6;
   position:relative;
-  animation:pop .55s cubic-bezier(.34,1.56,.64,1);
+  animation:pop .6s cubic-bezier(.34,1.56,.64,1);
+  overflow:hidden;
+}
+
+.box::before {
+  content:'💗';
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:28px;
+  animation:heartBeat 1.5s ease-in-out infinite;
+}
+
+.box::after {
+  content:'💗';
+  position:absolute;
+  bottom:12px;
+  left:18px;
+  font-size:28px;
+  animation:heartBeat 1.5s ease-in-out infinite .5s;
+}
+
+@keyframes heartBeat {
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.3); }
 }
 
 @keyframes pop {
-  from{transform:scale(.4) rotate(-8deg); opacity:0}
-  to{transform:scale(1) rotate(0); opacity:1}
+  from{ transform:scale(.3) rotate(-10deg); opacity:0; }
+  to{ transform:scale(1) rotate(0); opacity:1; }
 }
 
 .box p {
-  font-size:clamp(1.1rem,3.8vw,1.45rem);
+  font-size:clamp(1.1rem,3.9vw,1.5rem);
   color:#c2255c;
-  line-height:2.3;
-  font-weight:600;
+  line-height:2.4;
+  font-weight:700;
+  position:relative;
+  z-index:2;
 }
 
 .box .em {
   font-size:2rem;
-  margin-top:25px;
-  letter-spacing:10px;
+  margin-top:28px;
+  letter-spacing:12px;
   animation:bounce 1.5s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
 }
 
 .close {
@@ -184,73 +249,106 @@ h1 {
   border:none;
   color:#fff;
   font-size:20px;
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   cursor:pointer;
   font-weight:bold;
   transition:.3s;
+  z-index:5;
+  box-shadow:0 4px 10px rgba(214,51,108,.4);
 }
 
-.close:hover { background:#d6336c; transform:rotate(90deg) scale(1.1); }
+.close:hover { background:#d6336c; transform:rotate(90deg) scale(1.15); }
+
+/* کاغەزی ڕەنگاوڕەنگ */
+.confetti {
+  position:fixed;
+  width:10px;
+  height:10px;
+  z-index:200;
+  pointer-events:none;
+  animation:confettiFall 3s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0%{ transform:translateY(0) rotate(0); opacity:1; }
+  100%{ transform:translateY(100vh) rotate(720deg); opacity:0; }
+}
 </style>
 </head>
 <body>
 
-<h1>نامەی پیرۆز بایت بۆ هاتوا ئاران گیان</h1>
+<h1>💌 نامەی پیرۆز بایت بۆ هاتوا ئاران گیان 💌</h1>
 
-<div class="cat-box" onclick="document.getElementById('m').classList.add('on')">
-<svg class="cat" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
-<polygon points="70,90 55,20 120,70" fill="#f79b4a"/>
-<polygon points="230,90 245,20 180,70" fill="#f79b4a"/>
-<polygon points="78,85 68,38 112,72" fill="#ffd1b3"/>
-<polygon points="222,85 232,38 188,72" fill="#ffd1b3"/>
-<ellipse cx="150" cy="150" rx="95" ry="80" fill="#f79b4a"/>
-<ellipse cx="100" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
-<ellipse cx="200" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
-<ellipse cx="150" cy="105" rx="10" ry="6" fill="#e07b2a" opacity=".4"/>
-<ellipse cx="112" cy="150" rx="16" ry="19" fill="#fff"/>
-<ellipse cx="188" cy="150" rx="16" ry="19" fill="#fff"/>
-<ellipse cx="114" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
-<ellipse cx="190" cy="152" rx="9" ry="11" fill="#2d6a4f"/>
-<circle cx="111" cy="148" r="3.5" fill="#fff"/>
-<circle cx="187" cy="148" r="3.5" fill="#fff"/>
-<polygon points="150,172 143,182 157,182" fill="#ff8fa3"/>
-<ellipse cx="150" cy="184" rx="6" ry="4" fill="#ffb3c1"/>
-<path d="M150 188 Q135 205 122 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-<path d="M150 188 Q165 205 178 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-<line x1="85" y1="135" x2="125" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
-<line x1="215" y1="135" x2="175" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
-<ellipse cx="150" cy="280" rx="80" ry="55" fill="#f79b4a"/>
-<ellipse cx="105" cy="325" rx="28" ry="15" fill="#f79b4a"/>
-<ellipse cx="195" cy="325" rx="28" ry="15" fill="#f79b4a"/>
-<ellipse cx="105" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
-<ellipse cx="195" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
-<ellipse cx="110" cy="250" rx="18" ry="14" fill="#f79b4a"/>
-<ellipse cx="190" cy="250" rx="18" ry="14" fill="#f79b4a"/>
-</svg>
-<div class="letter">💌</div>
+<div class="cat-wrap">
+  <div class="stars" id="stars"></div>
+  <div class="cat-box" onclick="openLetter()">
+    <svg class="cat" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- گوێ -->
+      <polygon points="70,90 55,20 120,70" fill="#f79b4a"/>
+      <polygon points="230,90 245,20 180,70" fill="#f79b4a"/>
+      <polygon points="78,85 68,38 112,72" fill="#ffd1b3"/>
+      <polygon points="222,85 232,38 188,72" fill="#ffd1b3"/>
+      <!-- سەر -->
+      <ellipse cx="150" cy="150" rx="95" ry="80" fill="#f79b4a"/>
+      <!-- خاڵەکان -->
+      <ellipse cx="100" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
+      <ellipse cx="200" cy="120" rx="12" ry="7" fill="#e07b2a" opacity=".5"/>
+      <ellipse cx="150" cy="105" rx="10" ry="6" fill="#e07b2a" opacity=".4"/>
+      <!-- چاو -->
+      <ellipse cx="112" cy="150" rx="17" ry="20" fill="#fff"/>
+      <ellipse cx="188" cy="150" rx="17" ry="20" fill="#fff"/>
+      <ellipse cx="114" cy="153" rx="10" ry="12" fill="#2d6a4f"/>
+      <ellipse cx="190" cy="153" rx="10" ry="12" fill="#2d6a4f"/>
+      <circle cx="110" cy="147" r="4" fill="#fff"/>
+      <circle cx="186" cy="147" r="4" fill="#fff"/>
+      <circle cx="118" cy="158" r="2" fill="#fff" opacity=".8"/>
+      <circle cx="194" cy="158" r="2" fill="#fff" opacity=".8"/>
+      <!-- لووت -->
+      <polygon points="150,172 143,182 157,182" fill="#ff8fa3"/>
+      <ellipse cx="150" cy="184" rx="6" ry="4" fill="#ffb3c1"/>
+      <!-- دەم -->
+      <path d="M150 188 Q135 205 122 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M150 188 Q165 205 178 195" stroke="#d67b3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- سمێڵ -->
+      <line x1="85" y1="135" x2="125" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
+      <line x1="215" y1="135" x2="175" y2="128" stroke="#e07b2a" stroke-width="3" stroke-linecap="round"/>
+      <!-- لاشە -->
+      <ellipse cx="150" cy="280" rx="80" ry="55" fill="#f79b4a"/>
+      <!-- پێ -->
+      <ellipse cx="105" cy="325" rx="28" ry="15" fill="#f79b4a"/>
+      <ellipse cx="195" cy="325" rx="28" ry="15" fill="#f79b4a"/>
+      <ellipse cx="105" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
+      <ellipse cx="195" cy="328" rx="18" ry="8" fill="#ffd1b3"/>
+      <!-- دەستەکان -->
+      <ellipse cx="110" cy="250" rx="18" ry="14" fill="#f79b4a"/>
+      <ellipse cx="190" cy="250" rx="18" ry="14" fill="#f79b4a"/>
+    </svg>
+    <div class="letter">💌</div>
+  </div>
 </div>
 
-<p class="hint">کرتە لەسەر پشیلەکە بکە بۆ کردنەوەی نامەکە 🐱</p>
+<p class="hint" onclick="openLetter()">🐱 کرتە لەسەر پشیلەکە بکە بۆ کردنەوەی نامەکە 💌</p>
 
-<div class="modal" id="m" onclick="if(event.target===this)this.classList.remove('on')">
-<div class="box">
-<button class="close" onclick="document.getElementById('m').classList.remove('on')">✕</button>
-<p>
-ئاران، یەکەم بوونت زۆر پیرۆز بێت،<br>
-هەمیشە وا بدرەوشێیتەوە و ببیتە مایەی شانازی 🥹🤍<br>
-بەڕاستی کەسێکی وەک تۆ شایەنی<br>
-هەموو جوانییەکانی ژیانە. 🫶🏻🌷
-</p>
-<div class="em">🎂🎈🎁🌸✨</div>
-</div>
+<!-- مۆداڵ -->
+<div class="modal" id="m" onclick="if(event.target===this)closeLetter()">
+  <div class="box">
+    <button class="close" onclick="closeLetter()">✕</button>
+    <p>
+      ئاران، یەکەم بوونت زۆر پیرۆز بێت،<br>
+      هەمیشە وا بدرەوشێیتەوە و ببیتە مایەی شانازی 🥹🤍<br>
+      بەڕاستی کەسێکی وەک تۆ شایەنی<br>
+      هەموو جوانییەکانی ژیانە. 🫶🏻🌷
+    </p>
+    <div class="em">🎂🎈🎁🌸✨</div>
+  </div>
 </div>
 
 <script>
-// دروستکردنی دڵ و گوڵی فڕیو
-const symbols = ['💖','🌸','✨','💗','🌷','⭐','🩷','💕'];
-for (let i = 0; i < 22; i++) {
+// دڵ و گوڵی فڕیو
+const symbols = ['💖','🌸','✨','💗','🌷','⭐','🩷','💕','🎀','💐'];
+for (let i = 0; i < 25; i++) {
   const el = document.createElement('div');
   el.className = 'floaty';
   el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
@@ -260,6 +358,54 @@ for (let i = 0; i < 22; i++) {
   el.style.animationDelay = (Math.random() * 7) + 's';
   document.body.appendChild(el);
 }
+
+// ستارە لە دەوری پشیلە
+const starContainer = document.getElementById('stars');
+const starChars = ['✨','⭐','🌟','💫'];
+for (let i = 0; i < 8; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.textContent = starChars[Math.floor(Math.random() * starChars.length)];
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.animationDelay = (Math.random() * 2) + 's';
+  starContainer.appendChild(s);
+}
+
+// کردنەوەی نامە
+function openLetter() {
+  document.getElementById('m').classList.add('on');
+  createConfetti();
+}
+
+// داخستنی نامە
+function closeLetter() {
+  document.getElementById('m').classList.remove('on');
+}
+
+// کاغەزی ڕەنگاوڕەنگ
+function createConfetti() {
+  const colors = ['#ff6b9d','#ffd700','#ff8fab','#a78bfa','#4ade80','#60a5fa','#fbbf24'];
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-10px';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      c.style.width = (Math.random() * 8 + 6) + 'px';
+      c.style.height = (Math.random() * 8 + 6) + 'px';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 3000);
+    }, i * 40);
+  }
+}
+
+// ESC بۆ داخستن
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLetter();
+});
 </script>
 </body>
 </html>
